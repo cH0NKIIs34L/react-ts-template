@@ -47,13 +47,7 @@
       "groupName": "ESLint tooling"
     },
     {
-      "description": "Group Supabase client updates across apps",
-      "matchManagers": ["npm"],
-      "matchPackageNames": ["@supabase/supabase-js"],
-      "groupName": "Supabase client"
-    },
-    {
-      "description": "Group Express server dependency updates",
+      "description": "Group Express-related dependency updates",
       "matchManagers": ["npm"],
       "matchPackageNames": [
         "express",
@@ -62,7 +56,7 @@
         "jsonwebtoken",
         "dotenv"
       ],
-      "groupName": "Express server dependencies"
+      "groupName": "Express ecosystem"
     },
     {
       "description": "Group test library updates",

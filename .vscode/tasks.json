@@ -1,12 +1,13 @@
+// NOTE: tasks.json is JSONC (comments allowed). This configuration is client-only.
 {
   "version": "2.0.0",
   "tasks": [
     // ── Development ────────────────────────────────────────────
     {
-      "label": "💻 Client: Dev",
+      "label": "💻 Dev",
       "type": "npm",
       "script": "dev",
-      "path": "client",
+      "path": ".",
       "presentation": {
         "group": "dev-env",
         "reveal": "always",
@@ -14,33 +15,13 @@
         "focus": false
       }
     },
-    {
-      "label": "🖥️ Server: Dev",
-      "type": "npm",
-      "script": "dev",
-      "path": "server",
-      "presentation": {
-        "group": "dev-env",
-        "reveal": "always",
-        "panel": "dedicated",
-        "focus": true
-      }
-    },
-    {
-      "label": "🚀 Dev: Start All",
-      "dependsOn": ["💻 Client: Dev", "🖥️ Server: Dev"],
-      "dependsOrder": "parallel",
-      "presentation": {
-        "reveal": "silent"
-      }
-    },
 
     // ── Testing ────────────────────────────────────────────────
     {
-      "label": "🧪 Client: Tests (watch)",
+      "label": "🧪 Tests (watch)",
       "type": "npm",
       "script": "test:watch",
-      "path": "client",
+      "path": ".",
       "presentation": {
         "group": "testing",
         "panel": "dedicated",
@@ -48,32 +29,10 @@
       }
     },
     {
-      "label": "🧪 Client: Tests (run once)",
+      "label": "🧪 Tests (run once)",
       "type": "npm",
       "script": "test:run",
-      "path": "client",
-      "presentation": {
-        "group": "testing",
-        "panel": "dedicated",
-        "reveal": "always"
-      }
-    },
-    {
-      "label": "🧪 Server: Tests (watch)",
-      "type": "npm",
-      "script": "test:watch",
-      "path": "server",
-      "presentation": {
-        "group": "testing",
-        "panel": "dedicated",
-        "reveal": "always"
-      }
-    },
-    {
-      "label": "🧪 Server: Tests (run once)",
-      "type": "npm",
-      "script": "test",
-      "path": "server",
+      "path": ".",
       "presentation": {
         "group": "testing",
         "panel": "dedicated",
@@ -83,10 +42,10 @@
 
     // ── Linting ────────────────────────────────────────────────
     {
-      "label": "🔍 Client: Lint (check)",
+      "label": "🔍 Lint (check)",
       "type": "npm",
       "script": "lint",
-      "path": "client",
+      "path": ".",
       "presentation": {
         "group": "quality",
         "panel": "dedicated",
@@ -95,34 +54,10 @@
       "problemMatcher": ["$eslint-stylish"]
     },
     {
-      "label": "🔍 Server: Lint (check)",
-      "type": "npm",
-      "script": "lint",
-      "path": "server",
-      "presentation": {
-        "group": "quality",
-        "panel": "dedicated",
-        "reveal": "always"
-      },
-      "problemMatcher": ["$eslint-stylish"]
-    },
-    {
-      "label": "🔧 Client: Lint (fix)",
+      "label": "🔧 Lint (fix)",
       "type": "npm",
       "script": "lint:fix",
-      "path": "client",
-      "presentation": {
-        "group": "quality",
-        "panel": "dedicated",
-        "reveal": "always"
-      },
-      "problemMatcher": ["$eslint-stylish"]
-    },
-    {
-      "label": "🔧 Server: Lint (fix)",
-      "type": "npm",
-      "script": "lint:fix",
-      "path": "server",
+      "path": ".",
       "presentation": {
         "group": "quality",
         "panel": "dedicated",
@@ -131,7 +66,7 @@
       "problemMatcher": ["$eslint-stylish"]
     },
 
-    // ── Formatting ─────────────────────────────────────────────
+    // ── Formatting ──────────────────────────────────────────────
     {
       "label": "🎨 Format: Check",
       "type": "npm",
@@ -155,14 +90,12 @@
       }
     },
 
-    // ── CI Verify (mirrors all 6 CI jobs locally) ──────────────
+    // ── CI Verify (mirrors local client tasks) ────────────────
     {
       "label": "✅ CI: Verify All",
       "dependsOn": [
         "🧪 Client: Tests (run once)",
-        "🧪 Server: Tests (run once)",
         "🔍 Client: Lint (check)",
-        "🔍 Server: Lint (check)",
         "🎨 Format: Check",
         "🏗️ Client: Build"
       ],
@@ -172,12 +105,12 @@
       }
     },
 
-    // ── Build ──────────────────────────────────────────────────
+    // ── Build ───────────────────────────────────────────────────
     {
-      "label": "🏗️ Client: Build",
+      "label": "🏗️ Build",
       "type": "npm",
       "script": "build",
-      "path": "client",
+      "path": ".",
       "presentation": {
         "group": "build",
         "panel": "dedicated",
@@ -185,11 +118,12 @@
       }
     },
 
-    // ── Setup ──────────────────────────────────────────────────
+    // ── Setup ───────────────────────────────────────────────────
     {
       "label": "🛠️ Setup: Install All",
       "type": "npm",
       "script": "install:all",
+      "path": ".",
       "presentation": {
         "reveal": "always",
         "panel": "shared"
